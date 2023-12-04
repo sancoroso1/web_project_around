@@ -1,0 +1,14 @@
+body {
+  background-color: #000000;
+  color: white;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 720px) {
+  body {
+    /* width: 880px; */
+    /* padding-left: 200px;
+    padding-right: 200px; */
+    padding: 0 auto;
+  }
+}

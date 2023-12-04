@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Around the USA</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/header__logo.png"
+        alt="Ups! Algo falló. Este es la imagen de encabezado." />
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__image" src="/images/profile__picture.png"
+          alt="Ups! Algo falló. Esta es la foto de perfil" />
+        <div class="profile__info">
+          <h1 class="profile__title">Jacques Cousteau</h1>
+          <h2 class="profile__description">Explorer</h2>
+          <button class="profile__edit-button"></button>
+        </div>
+        <button class="profile__add-button"></button>
+      </section>
+      <section class="elements">
+        <ul class="element__list">
+          <li class="element__container">
+            <img class="element__image" src="./images/element__image_bald-mountain.png" alt="Ups! Something went wrong. This is a picture of the Bald Mountain.">
+            <div class="element__description">
+              <h2 class="element__text">Bald Mountain</h2>
+              <button class="element__like-button"></button>
+            </div>
+          </li>
+          <li class="element__container">
+            <img class="element__image" src="./images/element__image_lake-tahoe.jpg" alt="Ups! Something went wrong. This is a picture of the Lake Tahoe.">
+            <div class="element__description">
+              <h2 class="element__text">Lake Tahoe</h2>
+              <button class="element__like-button"></button>
+            </div>
+          </li>
+          <li class="element__container">
+            <img class="element__image" src="./images/element__image_lake-louise.png" alt="Ups! Something went wrong. This is a picture of the Lake Louise.">
+            <div class="element__description">
+              <h2 class="element__text">Lake Louise</h2>
+              <button class="element__like-button"></button>
+            </div>
+          </li>
+          <li class="element__container">
+            <img class="element__image" src="./images/element__image_crater-lake.png" alt="Ups! Something went wrong. This is a picture of the Crater Lake.">
+            <div class="element__description">
+              <h2 class="element__text">Crater Lake</h2>
+              <button class="element__like-button"></button>
+            </div>
+          </li>
+          <li class="element__container">
+            <img class="element__image" src="./images/element__image_yosemite.png" alt="Ups! Something went wrong. This is a picture of the Yosemite National Park.">
+            <div class="element__description">
+              <h2 class="element__text">Yosemite National Park</h2>
+              <button class="element__like-button"></button>
+            </div>
+          </li>
+          <li class="element__container">
+            <img class="element__image" src="./images/element__image_lake-huron.png" alt="Ups! Something went wrong. This is a picture of the Lake Huron.">
+            <div class="element__description">
+              <h2 class="element__text">Lake Huron</h2>
+              <button class="element__like-button"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2023 Santiago Correa FT TripleTen</p>
+    </footer>
+    <div class="form">
+      <div class="form__container">
+        <button class="form__exit-button"></button>
+        <h2 class="form__title">Edit profile</h2>
+        <input class="form__name" type="text" name="name" placeholder="Name" required />
+        <input class="form__description" type="text" name="description" placeholder="Description" required />
+        <div class=form__save-button>Save</div>
+      </div>
+    </div>
+  </div>
+  <script src="scripts/script.js"></script>
+</body>
+</html>
