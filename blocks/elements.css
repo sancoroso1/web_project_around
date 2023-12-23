@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 
-.element__list {
+.elements__list {
   list-style: none;
   display: grid;
   justify-content: center;
@@ -14,7 +14,7 @@
   margin: 0 auto;
 }
 
-.element__container {
+.elements__container {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -24,7 +24,7 @@
   margin: auto;
 }
 
-.element__image {
+.elements__image {
   width: 282px;
   height: 282px;
   border-radius: 15px 15px 0 0;
@@ -32,7 +32,7 @@
   cursor: pointer;
 }
 
-.element__description {
+.elements__description {
   display: flex;
   align-items: center;
   padding: 25px 20px 25px 20px;
@@ -40,7 +40,7 @@
 
 }
 
-.element__title {
+.elements__title {
   font-family: "Inter";
   font-style: normal;
   font-weight: 900;
@@ -58,13 +58,13 @@
     padding-top: 50px;
   }
 
-  .element__list {
+  .elements__list {
     grid-template-columns: repeat(2, auto);
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .element__list {
+  .elements__list {
     grid-template-columns: repeat(3, auto);
   }
 }

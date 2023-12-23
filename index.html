@@ -22,53 +22,53 @@
         <button type="button" class="button-new"></button>
       </section>
       <div class="elements">
-        <ul class="element__list">
+        <ul class="elements__list">
         </ul>
       </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2023 Santiago Correa FT TripleTen</p>
     </footer>
-    <div class="popup popup__content_edit-profile">
+    <div class="popup popup__edit-profile">
       <div class="popup__overlay"></div>
       <div class="popup__content">
         <button class="button-close"></button>
         <h2 class="popup__title">Edit profile</h2>
         <form class="popup__form popup__set popup__form_edit">
-          <input type="text" class="popup__form_text-field form__name" name="name" placeholder="Name" required>
-          <input type="text" class="popup__form_text-field form__description" name="job" placeholder="Description"
+          <input type="text" class="popup__form_text popup__form_name" name="name" placeholder="Name" required>
+          <input type="text" class="popup__form_text popup__form_description" name="job" placeholder="Description"
             required>
           <input type="submit" class="button-save" value="Send">
         </form>
       </div>
     </div>
-    <div class="popup popup__content_add">
+    <div class="popup popup__new-element">
       <div class="popup__overlay"></div>
       <div class="popup__content">
         <button class="button-close"></button>
         <h2 class="popup__title">New place</h2>
         <form class="popup__form popup__set popup__form_add">
-          <input type="text" class="popup__form_text-field form__title" name="title" placeholder="Title" required>
-          <input type="text" class="popup__form_text-field form__link" name="link" placeholder="Link" required>
+          <input type="text" class="popup__form_text popup__form_title" name="title" placeholder="Title" required>
+          <input type="text" class="popup__form_text popup__form_link" name="link" placeholder="Link" required>
           <input type="submit" class="button-save" value="Send">
         </form>
       </div>
     </div>
     <div class="popup popup_content_image">
       <div class="popup__overlay"></div>
-      <div class="popup__image_container">
+      <div class="popup__image-container">
         <button class="button-close"></button>
         <img class="popup__image-opened" src="./images/image_crater-lake.png" alt="Picture zoomed.">
         <p class="popup__image_text"></p>
       </div>
     </div>
   </div>
-  <template id="element-template">
-    <li class="element__container">
-      <img class="element__image" src="./images/image_crater-lake.png" alt="One of the most beautiful pictures in this webpage.">
+  <template id="elements-template">
+    <li class="elements__container">
+      <img class="elements__image" src="./images/image_crater-lake.png" alt="One of the most beautiful pictures in this webpage.">
       <button type="button" class="button-trash"><img src="./images/button-trash.png" alt="Trash"></button>
-      <div class="element__description">
-        <h2 class="element__title"></h2>
+      <div class="elements__description">
+        <h2 class="elements__title"></h2>
         <button type="button" class="button-like"></button>
       </div>
     </li>

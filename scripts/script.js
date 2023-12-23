@@ -1,20 +1,20 @@
-const container = document.querySelector(".element__list");
+const container = document.querySelector(".elements__list");
 
 const buttonEdit = document.querySelector(".button-edit");
 const buttonAdd = document.querySelector(".button-new");
 
-const popupProfile = document.querySelector(".popup__content_edit-profile");
+const popupProfile = document.querySelector(".popup__edit-profile");
 const formProfile = popupProfile.querySelector(".popup__form_edit");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__description");
-const inputName = popupProfile.querySelector('.form__name[name="name"]');
-const inputJob = popupProfile.querySelector('.form__description[name="job"]');
+const inputName = popupProfile.querySelector('.popup__form_name[name="name"]');
+const inputJob = popupProfile.querySelector('.popup__form_description[name="job"]');
 const closeButton = popupProfile.querySelector(".button-close");
 
-const popupAdd = document.querySelector(".popup__content_add");
+const popupAdd = document.querySelector(".popup__new-element");
 const formAdd = popupAdd.querySelector(".popup__form_add");
-const inputTitle = popupAdd.querySelector('.form__title[name="title"]');
-const inputEnlace = popupAdd.querySelector('.form__link[name="link"]');
+const inputTitle = popupAdd.querySelector('.popup__form_title[name="title"]');
+const inputEnlace = popupAdd.querySelector('.popup__form_link[name="link"]');
 const closeButtonAdd = popupAdd.querySelector(".button-close");
 
 const popupImage = document.querySelector(".popup_content_image");
@@ -49,13 +49,13 @@ const cards = [
 ];
 
 const renderCard = (name, link) => {
-  const template = document.querySelector("#element-template").content;
-  const element = template.querySelector(".element__container").cloneNode(true);
-  const imageElement = element.querySelector(".element__image");
-  const titleElement = element.querySelector(".element__title");
+  const template = document.querySelector("#elements-template").content;
+  const element = template.querySelector(".elements__container").cloneNode(true);
+  const imageElement = element.querySelector(".elements__image");
+  const titleElement = element.querySelector(".elements__title");
   const buttonTrash = element.querySelector(".button-trash");
   const buttonLike = element.querySelector(".button-like");
-  const openImage = element.querySelector(".element__image")
+  const openImage = element.querySelector(".elements__image")
 
   titleElement.innerText = name;
   imageElement.src = link;
