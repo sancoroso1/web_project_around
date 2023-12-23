@@ -9,9 +9,13 @@
 * Esta web busca mostrar los diferentes metodos de posicionamiento combinando Flex y Grid para las páginas web responsivas, en adición, se utilizan Formularios y JavaScript con el objetivo de actualizar dinamicamente la información en pantalla.
 
 ## DESCRIPTION
+### Sprint 5
 * Utilizando FlexBox, Grid y posicionamiento de elementos, se ubicaron los diferentes bloques y elementos.
 * Utilizando @media se dio dinamismo a todos los bloques para su correcta visualización en diferentes dispositivos.
 * Utilizando formularios en combinación con JavaScript y Funciones, se logra crear una ventana emergente para así modificar el nombre y descripción del usuario.
+### Sprint 6
+* Utilizando JavaScript agregamos nuevas funciones para dar más dinamizmo.
+* Se habilitaron las funciones de: Agregar nuevas imagenes con su nombre, ampliar la imagen, borrar la imagen, dar like a la imagen.
 
 ## Links
 * [GIT Page](https://sancoroso1.github.io/web_project_around/)
