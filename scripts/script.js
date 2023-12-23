@@ -68,7 +68,7 @@ const renderCard = (name, link) => {
   });
   openImage.addEventListener("click", function () {
     document.querySelector(".popup__image-opened").src = link;
-    document.querySelector(".popup__image_text").innerText = name;
+    document.querySelector(".popup__image-text").innerText = name;
     togglePopup(popupImage);
   });
 
