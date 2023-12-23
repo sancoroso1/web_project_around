@@ -3,7 +3,7 @@ const container = document.querySelector(".elements__list");
 const buttonEdit = document.querySelector(".button-edit");
 const buttonAdd = document.querySelector(".button-new");
 
-const popupProfile = document.querySelector(".popup__edit-profile");
+const popupProfile = document.querySelector(".edit-profile");
 const formProfile = popupProfile.querySelector(".popup__form_edit");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__description");
@@ -11,7 +11,7 @@ const inputName = popupProfile.querySelector('.popup__form_name[name="name"]');
 const inputJob = popupProfile.querySelector('.popup__form_description[name="job"]');
 const closeButton = popupProfile.querySelector(".button-close");
 
-const popupAdd = document.querySelector(".popup__new-element");
+const popupAdd = document.querySelector(".new-element");
 const formAdd = popupAdd.querySelector(".popup__form_add");
 const inputTitle = popupAdd.querySelector('.popup__form_title[name="title"]');
 const inputEnlace = popupAdd.querySelector('.popup__form_link[name="link"]');
