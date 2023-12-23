@@ -1,0 +1,120 @@
+.button-edit {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  right: 0px;
+  top: 15px;
+  background-image: url(../images/button-edit.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  border-color: white;
+  cursor: pointer;
+}
+
+.button-edit:hover {
+  opacity: 0.6;
+}
+
+.button-new {
+  width: 150px;
+  height: 50px;
+  background-image: url(../images/button-new.png);
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position: center;
+  border-color: white;
+  cursor: pointer;
+  margin: auto;
+}
+
+.button-new:hover {
+  opacity: 0.6;
+}
+
+.button-like {
+  border: none;
+  background-image: url(../images/button-like.png);
+  width: 21px;
+  height: 19px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.button-like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.button-like-black {
+  background-image: url(../images/button-like-active.png);
+}
+
+.button-trash {
+  border: none;
+  background: none;
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+  padding: 0;
+  margin-top: 18px;
+  margin-left: 249px;
+}
+
+.button-trash:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.botton-save {
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 358px;
+  height: 50.152px;
+  border-radius: 2px;
+  background: #000;
+  margin-left: 36px;
+  border: none;
+}
+
+.botton-save:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.button-close {
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  background-image: url(../images/button-close.png);
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: -40px;
+  top: -40px;
+  background-color: transparent;
+  border: none;
+}
+
+@media screen and (max-width: 767px) {
+  .button-new {
+    width: 282px;
+    height: 50px;
+    border-radius: 2px;
+    margin: 0;
+    background-image: url(../images/button-new-wide.png);
+  }
+
+  .save {
+    width: 238px;
+    height: 46px;
+    margin-left: 22px;
+  }
+}

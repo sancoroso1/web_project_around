@@ -8,7 +8,7 @@
   margin-right: auto;
 }
 
-.header__logo {
+.header__title {
   width: 126px;
   padding-left: 27px;
 }
@@ -19,7 +19,7 @@
     padding-left: 19px;
   }
 
-  .header__logo {
+  .header__title {
     width: 173px;
     padding-left: 0;
   }

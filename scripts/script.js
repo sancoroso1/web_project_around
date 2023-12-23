@@ -1,32 +1,139 @@
-const formElement = document.querySelector(".form");
-const editButton = document.querySelector(".profile__edit-button");
-const exitButton = document.querySelector(".form__exit-button");
-const saveButton = document.querySelector(".form__save-button");
+const container = document.querySelector(".element__list");
 
-function ChangeVisibility() {
-  formElement.classList.toggle('form_displayed');
+const buttonEdit = document.querySelector(".button-edit");
+const buttonAdd = document.querySelector(".button-new");
+
+const popupProfile = document.querySelector(".popup__content_edit-profile");
+const formProfile = popupProfile.querySelector(".popup__form_edit");
+const profileName = document.querySelector(".profile__name");
+const profileJob = document.querySelector(".profile__description");
+const inputName = popupProfile.querySelector('.form__name[name="name"]');
+const inputJob = popupProfile.querySelector('.form__description[name="job"]');
+const closeButton = popupProfile.querySelector(".button-close");
+
+const popupAdd = document.querySelector(".popup__content_add");
+const formAdd = popupAdd.querySelector(".popup__form_add");
+const inputTitle = popupAdd.querySelector('.form__title[name="title"]');
+const inputEnlace = popupAdd.querySelector('.form__link[name="link"]');
+const closeButtonAdd = popupAdd.querySelector(".button-close");
+
+const popupImage = document.querySelector(".popup_content_image");
+const closeButtonImage = popupImage.querySelector(".button-close");
+
+//Creacion de tarjetas
+const cards = [
+  {
+    name: "Valle de Yosemite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+  },
+  {
+    name: "Lago Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+  },
+  {
+    name: "Montañas Calvas",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+  },
+  {
+    name: "Parque Nacional de la Vanoise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+  },
+];
+
+const renderCard = (name, link) => {
+  const template = document.querySelector("#element-template").content;
+  const element = template.querySelector(".element__container").cloneNode(true);
+  const imageElement = element.querySelector(".element__image");
+  const titleElement = element.querySelector(".element__title");
+  const buttonTrash = element.querySelector(".button-trash");
+  const buttonLike = element.querySelector(".button-like");
+  const openImage = element.querySelector(".element__image")
+
+  titleElement.innerText = name;
+  imageElement.src = link;
+
+  buttonTrash.addEventListener("click", function () {
+    element.remove();
+  });
+  buttonLike.addEventListener("click", function () {
+    buttonLike.classList.toggle("button-like-black");
+  });
+  openImage.addEventListener("click", function () {
+    document.querySelector(".popup__image-opened").src = link;
+    document.querySelector(".popup__image_text").innerText = name;
+    togglePopup(popupImage);
+  });
+
+  container.prepend(element);
+};
+
+function togglePopup(popup) {
+  popup.classList.toggle("popup__show");
 }
 
-function HideVisibility() {
-  formElement.classList.remove('form_displayed');
-}
+//Abrir popup para editar nombre y descripcion
+buttonEdit.addEventListener("click", function () {
+  togglePopup(popupProfile);
+});
 
-editButton.addEventListener("click", ChangeVisibility);
-exitButton.addEventListener('click', HideVisibility);
-saveButton.addEventListener('click', HideVisibility);
+//Cerrar popup para editar nombre y descripcion
+closeButton.addEventListener("click", function () {
+  togglePopup(popupProfile);
+});
 
-let profileName = document.querySelector(".profile__title");
-let profileJob = document.querySelector(".profile__description");
-let nameInput = document.querySelector(".form__name");
-let jobInput = document.querySelector(".form__description");
+//Guardar y cerrar popup para editar nombre y descripcion
+formProfile.addEventListener("submit", function (event) {
+  event.preventDefault();
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
+  formProfile.reset();
+  togglePopup(popupProfile);
+});
 
-nameInput.placeholder = profileName.textContent;
-jobInput.placeholder = profileJob.textContent;
+//Abrir popup para añadir una imagen
+buttonAdd.addEventListener("click", function () {
+  togglePopup(popupAdd);
+});
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-}
+//Cerr popup para añadir una imagen
+closeButtonAdd.addEventListener("click", function () {
+  togglePopup(popupAdd);
+});
 
-saveButton.addEventListener("click", handleProfileFormSubmit);
+//Guardar y cerrar popup para añadir una imagen
+formAdd.addEventListener("submit", function (event) {
+  event.preventDefault();
+  renderCard(inputTitle.value, inputEnlace.value);
+  formAdd.reset();
+  togglePopup(popupAdd);
+});
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    if (popupImage.classList.contains('popup__show')) {
+      togglePopup(popupImage);
+    }
+    if (popupAdd.classList.contains('popup__show')) {
+      togglePopup(popupAdd);
+    }
+    if (popupProfile.classList.contains('popup__show')) {
+      togglePopup(popupProfile);
+    }
+  }
+});
+
+closeButtonImage.addEventListener("click", function () {
+  togglePopup(popupImage);
+});
+
+cards.forEach(function (item) {
+  renderCard(item.name, item.link);
+});

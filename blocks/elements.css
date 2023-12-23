@@ -29,6 +29,7 @@
   height: 282px;
   border-radius: 15px 15px 0 0;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .element__description {
@@ -39,7 +40,7 @@
 
 }
 
-.element__text {
+.element__title {
   font-family: "Inter";
   font-style: normal;
   font-weight: 900;
@@ -50,18 +51,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.element__like-button {
-  background: url(../images/element__like-button.png) center;
-  height: 18px;
-  width: 21px;
-  border: none;
-  cursor: pointer;
-}
-
-.element__like-button:hover {
-  opacity: .5;
 }
 
 @media screen and (min-width: 768px) {
