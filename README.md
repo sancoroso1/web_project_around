@@ -14,9 +14,9 @@
 * Utilizando @media se dio dinamismo a todos los bloques para su correcta visualización en diferentes dispositivos.
 * Utilizando formularios en combinación con JavaScript y Funciones, se logra crear una ventana emergente para así modificar el nombre y descripción del usuario.
 ### Sprint 6
-* Utilizando JavaScript agregamos nuevas funciones para dar más dinamizmo.
+* Utilizando JavaScript agregamos nuevas funciones para dar más dinamismo.
 * Se habilitaron las funciones de: Agregar nuevas imagenes con su nombre, ampliar la imagen, borrar la imagen, dar like a la imagen.
 
-## Links
+## LINKS
 * [GIT Page](https://sancoroso1.github.io/web_project_around/)
 * Web design in [FIGMA](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4%3A-Around-The-U.S.-%2F-desktop-%2B-mobile?type=design&node-id=0-1&mode=design&t=omoJIlRF922CtUB4-0) 
