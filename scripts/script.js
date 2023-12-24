@@ -59,6 +59,7 @@ const renderCard = (name, link) => {
 
   titleElement.innerText = name;
   imageElement.src = link;
+  imageElement.alt = "This is a picture of " + name;
 
   buttonTrash.addEventListener("click", function () {
     element.remove();
