@@ -17,11 +17,7 @@
 
 .profile__info {
   width: 282px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   position: relative;
-  align-items: center;
 }
 
 .profile__name {
@@ -47,6 +43,7 @@
   margin: 0;
   padding-bottom: 36px;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 767px) {
