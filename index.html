@@ -36,12 +36,23 @@
       <div class="popup__content">
         <button class="button-close"></button>
         <h2 class="popup__title">Edit profile</h2>
-        <form class="popup__form popup__set popup__form_edit">
-          <input type="text" class="form-text form-name" name="name" placeholder="Name" required>
-          <input type="text" class="form-text form-description" name="job" placeholder="Description"
-            required>
-          <input type="submit" class="button-save" value="Send">
+
+        <form class="popup__form popup__form_edit form" novalidate>
+          <fieldset class="form__set popup__set">
+            <label class="form__field">
+              <input type="text" class="form-text form-name form__input" id="name-input" name="name" placeholder="Name"
+                required minlength="2" maxlength="40">
+              <span class="form__input-error name-input-error"></span>
+            </label>
+            <label class="form__field">
+              <input type="text" class="form-text form-description form__input" id="description-input" name="job"
+                placeholder="Description" required minlength="2" maxlength="200">
+              <span class="form__input-error description-input-error"></span>
+            </label>
+            <button type="submit" class="button-save form__submit" value="Send">Send</button>
+          </fieldset>
         </form>
+
       </div>
     </div>
     <div class="popup new-element">
@@ -49,11 +60,22 @@
       <div class="popup__content">
         <button class="button-close"></button>
         <h2 class="popup__title">New place</h2>
-        <form class="popup__form popup__set popup__form_add">
-          <input type="text" class="form-text form-title" name="title" placeholder="Title" required>
-          <input type="text" class="form-text form-link" name="link" placeholder="Link" required>
-          <input type="submit" class="button-save" value="Send">
+
+        <form class="popup__form popup__form_add form" novalidate>
+          <fieldset class="form__set popup__set">
+            <label class="form__field">
+              <input type="text" class="form-text form-title form__input" id="title-input" name="title"
+                placeholder="Title" required minlength="2" maxlength="30">
+              <span class="form__input-error title-input-error"></span>
+            </label>
+            <label class="form__field">
+              <input type="url" class="form-text form-link form__input" id="link-input" name="link" placeholder="Link" required>
+              <span class="form__input-error link-input-error"></span>
+            </label>
+            <button type="submit" class="button-save form__submit" value="Send">Send</button>
+          </fieldset>
         </form>
+
       </div>
     </div>
     <div class="popup popup_content_image">
@@ -76,6 +98,7 @@
     </li>
   </template>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

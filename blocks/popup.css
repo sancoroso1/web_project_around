@@ -94,6 +94,26 @@
   margin: auto 36px 29.74px 36px;
 }
 
+.form__field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__input-error {
+  font-size: 12px;
+  color: red;
+  position: absolute;
+  top: calc(40% + 6px);
+  left: 36px;
+  transition: 0.3s;
+  width: 358px;
+}
+
+.form__input_type_error {
+  border-bottom-color: red;
+}
+
 @media screen and (max-width:767px) {
   .popup__content {
     width: 282px;
@@ -122,6 +142,12 @@
     width: 238px;
     height: 14px;
     margin-left: 22px;
+  }
+
+  .form__input-error {
+    width: 238px;
+    font-size: 10px;
+    left: 22px;
   }
 
   .popup__image_container {

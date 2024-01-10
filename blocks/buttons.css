@@ -88,6 +88,16 @@
   cursor: pointer;
 }
 
+.button-save_inactive {
+  color: #B8B8B8;
+  background: #EDEDED;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .button-close {
   position: absolute;
   z-index: 1;
