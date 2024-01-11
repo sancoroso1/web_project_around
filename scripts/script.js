@@ -10,15 +10,18 @@ const profileJob = document.querySelector(".profile__description");
 const inputName = popupProfile.querySelector('.form-name[name="name"]');
 const inputJob = popupProfile.querySelector('.form-description[name="job"]');
 const closeButton = popupProfile.querySelector(".button-close");
+const closePopup = popupProfile.querySelector(".popup__overlay");
 
 const popupAdd = document.querySelector(".new-element");
 const formAdd = popupAdd.querySelector(".popup__form_add");
 const inputTitle = popupAdd.querySelector('.form-title[name="title"]');
 const inputEnlace = popupAdd.querySelector('.form-link[name="link"]');
 const closeButtonAdd = popupAdd.querySelector(".button-close");
+const closePopupAdd = popupAdd.querySelector(".popup__overlay");
 
 const popupImage = document.querySelector(".popup_content_image");
 const closeButtonImage = popupImage.querySelector(".button-close");
+const closePopupImage = popupImage.querySelector(".popup__overlay");
 
 //Creacion de tarjetas
 const cards = [
@@ -76,17 +79,16 @@ const renderCard = (name, link) => {
   container.prepend(element);
 };
 
+cards.forEach(function (item) {
+  renderCard(item.name, item.link);
+});
+
 function togglePopup(popup) {
   popup.classList.toggle("popup__show");
 }
 
 //Abrir popup para editar nombre y descripcion
 buttonEdit.addEventListener("click", function () {
-  togglePopup(popupProfile);
-});
-
-//Cerrar popup para editar nombre y descripcion
-closeButton.addEventListener("click", function () {
   togglePopup(popupProfile);
 });
 
@@ -99,13 +101,20 @@ formProfile.addEventListener("submit", function (event) {
   togglePopup(popupProfile);
 });
 
-//Abrir popup para añadir una imagen
-buttonAdd.addEventListener("click", function () {
-  togglePopup(popupAdd);
+//Cerrar popup para editar nombre y descripcion
+closeButton.addEventListener("click", function () {
+  togglePopup(popupProfile);
+  formProfile.reset();
 });
 
-//Cerr popup para añadir una imagen
-closeButtonAdd.addEventListener("click", function () {
+//Cerrar popup para editar nombre y descripcion al hacer click fuera del popup
+closePopup.addEventListener("click", function (){
+  togglePopup(popupProfile);
+  formProfile.reset();
+});
+
+//Abrir popup para añadir una imagen
+buttonAdd.addEventListener("click", function () {
   togglePopup(popupAdd);
 });
 
@@ -115,6 +124,28 @@ formAdd.addEventListener("submit", function (event) {
   renderCard(inputTitle.value, inputEnlace.value);
   formAdd.reset();
   togglePopup(popupAdd);
+});
+
+//Cerrar popup para añadir una imagen
+closeButtonAdd.addEventListener("click", function () {
+  togglePopup(popupAdd);
+  formAdd.reset();
+});
+
+//Cerrar popup para añadir una imagen al hacer click fuera del popup
+closePopupAdd.addEventListener("click", function (){
+  togglePopup(popupAdd);
+  formAdd.reset();
+});
+
+//Cerrar popup imagen ampliada
+closeButtonImage.addEventListener("click", function () {
+  togglePopup(popupImage);
+});
+
+//Cerrar popup imagen ampliada al hacer click fuera del popup
+closePopupImage.addEventListener("click", function (){
+  togglePopup(popupImage);
 });
 
 document.addEventListener('keydown', function (event) {
@@ -129,12 +160,4 @@ document.addEventListener('keydown', function (event) {
       togglePopup(popupProfile);
     }
   }
-});
-
-closeButtonImage.addEventListener("click", function () {
-  togglePopup(popupImage);
-});
-
-cards.forEach(function (item) {
-  renderCard(item.name, item.link);
 });

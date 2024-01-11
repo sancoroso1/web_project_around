@@ -28,7 +28,6 @@ const hasInvalidInput = (inputList) => {
 };
 
 const toggleButtonState = (inputList, buttonElement) => {
-  console.log(hasInvalidInput(inputList));
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add("button-save_inactive");
   } else {
@@ -54,9 +53,7 @@ const enableValidation = () => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
-
     const fieldsetList = Array.from(formElement.querySelectorAll(".form__set"));
-
     fieldsetList.forEach((fieldset) => {
       setEventListeners(fieldset);
     });
