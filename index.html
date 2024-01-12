@@ -29,7 +29,7 @@
       </div>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">© 2023 Santiago Correa FT TripleTen</p>
+      <p class="footer__copyright">&copy 2023 Santiago Correa FT TripleTen</p>
     </footer>
     <div class="popup edit-profile">
       <div class="popup__overlay"></div>
@@ -40,12 +40,12 @@
         <form class="popup__form popup__form_edit form" novalidate>
           <fieldset class="form__set popup__set">
             <label class="form__field">
-              <input type="text" class="form-text form-name form__input" id="name-input" name="name" placeholder="Name"
+              <input type="text" class="form-text form-name form__input" id="name-input" name="Jacques Cousteau" placeholder="Name"
                 required minlength="2" maxlength="40">
               <span class="form__input-error name-input-error"></span>
             </label>
             <label class="form__field">
-              <input type="text" class="form-text form-description form__input" id="description-input" name="job"
+              <input type="text" class="form-text form-description form__input" id="description-input" name="Explorer"
                 placeholder="Description" required minlength="2" maxlength="200">
               <span class="form__input-error description-input-error"></span>
             </label>
@@ -60,7 +60,6 @@
       <div class="popup__content">
         <button class="button-close"></button>
         <h2 class="popup__title">New place</h2>
-
         <form class="popup__form popup__form_add form" novalidate>
           <fieldset class="form__set popup__set">
             <label class="form__field">
@@ -75,7 +74,6 @@
             <button type="submit" class="button-save form__submit" value="Send">Send</button>
           </fieldset>
         </form>
-
       </div>
     </div>
     <div class="popup popup_content_image">
@@ -97,8 +95,7 @@
       </div>
     </li>
   </template>
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>

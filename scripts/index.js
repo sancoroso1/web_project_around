@@ -1,3 +1,6 @@
+import { enableValidation } from "./validate.js";
+enableValidation();
+
 const container = document.querySelector(".elements__list");
 
 const buttonEdit = document.querySelector(".button-edit");
@@ -7,15 +10,15 @@ const popupProfile = document.querySelector(".edit-profile");
 const formProfile = popupProfile.querySelector(".popup__form_edit");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__description");
-const inputName = popupProfile.querySelector('.form-name[name="name"]');
-const inputJob = popupProfile.querySelector('.form-description[name="job"]');
+const inputName = popupProfile.querySelector('.form-name[name="Jacques Cousteau"]');
+const inputJob = popupProfile.querySelector('.form-description[name="Explorer"]');
 const closeButton = popupProfile.querySelector(".button-close");
 const closePopup = popupProfile.querySelector(".popup__overlay");
 
 const popupAdd = document.querySelector(".new-element");
 const formAdd = popupAdd.querySelector(".popup__form_add");
 const inputTitle = popupAdd.querySelector('.form-title[name="title"]');
-const inputEnlace = popupAdd.querySelector('.form-link[name="link"]');
+const inputLink = popupAdd.querySelector('.form-link[name="link"]');
 const closeButtonAdd = popupAdd.querySelector(".button-close");
 const closePopupAdd = popupAdd.querySelector(".popup__overlay");
 
@@ -60,7 +63,7 @@ const renderCard = (name, link) => {
   const buttonLike = element.querySelector(".button-like");
   const openImage = element.querySelector(".elements__image")
 
-  titleElement.innerText = name;
+  titleElement.textContent = name;
   imageElement.src = link;
   imageElement.alt = "This is a picture of " + name;
 
@@ -72,7 +75,8 @@ const renderCard = (name, link) => {
   });
   openImage.addEventListener("click", function () {
     document.querySelector(".popup__image-opened").src = link;
-    document.querySelector(".popup__image-text").innerText = name;
+    document.querySelector(".popup__image-opened").alt = "This is a picture of " + name;
+    document.querySelector(".popup__image-text").textContent = name;
     togglePopup(popupImage);
   });
 
@@ -87,6 +91,9 @@ function togglePopup(popup) {
   popup.classList.toggle("popup__show");
 }
 
+inputName.value = profileName.textContent;
+inputJob.value = profileJob.textContent;
+
 //Abrir popup para editar nombre y descripcion
 buttonEdit.addEventListener("click", function () {
   togglePopup(popupProfile);
@@ -97,7 +104,6 @@ formProfile.addEventListener("submit", function (event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
-  formProfile.reset();
   togglePopup(popupProfile);
 });
 
@@ -108,7 +114,7 @@ closeButton.addEventListener("click", function () {
 });
 
 //Cerrar popup para editar nombre y descripcion al hacer click fuera del popup
-closePopup.addEventListener("click", function (){
+closePopup.addEventListener("click", function () {
   togglePopup(popupProfile);
   formProfile.reset();
 });
@@ -121,7 +127,7 @@ buttonAdd.addEventListener("click", function () {
 //Guardar y cerrar popup para añadir una imagen
 formAdd.addEventListener("submit", function (event) {
   event.preventDefault();
-  renderCard(inputTitle.value, inputEnlace.value);
+  renderCard(inputTitle.value, inputLink.value);
   formAdd.reset();
   togglePopup(popupAdd);
 });
@@ -133,7 +139,7 @@ closeButtonAdd.addEventListener("click", function () {
 });
 
 //Cerrar popup para añadir una imagen al hacer click fuera del popup
-closePopupAdd.addEventListener("click", function (){
+closePopupAdd.addEventListener("click", function () {
   togglePopup(popupAdd);
   formAdd.reset();
 });
@@ -144,7 +150,7 @@ closeButtonImage.addEventListener("click", function () {
 });
 
 //Cerrar popup imagen ampliada al hacer click fuera del popup
-closePopupImage.addEventListener("click", function (){
+closePopupImage.addEventListener("click", function () {
   togglePopup(popupImage);
 });
 
