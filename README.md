@@ -16,6 +16,10 @@
 ### Sprint 6
 * Utilizando JavaScript agregamos nuevas funciones para dar más dinamismo.
 * Se habilitaron las funciones de: Agregar nuevas imagenes con su nombre, ampliar la imagen, borrar la imagen, dar like a la imagen.
+### Sprint 7
+* Utilizando JavaScript agregamos validación a los diferentes formularios, impidiendo así que se ingresen datos erroneos 
+* Se agregó la funcionalidad de cerrar la ventana emergente haciendo click fuera de ella.
+* Se agregó la funcionalidad de cerrar la ventana emergente presionando la tecla "Escape".
 
 ## LINKS
 * [GIT Page](https://sancoroso1.github.io/web_project_around/)
