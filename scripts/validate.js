@@ -32,6 +32,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.classList.add("button-save_inactive");
   } else {
     buttonElement.classList.remove("button-save_inactive");
+    buttonElement.disabled = false;
   }
 };
 

@@ -10,8 +10,8 @@ const popupProfile = document.querySelector(".edit-profile");
 const formProfile = popupProfile.querySelector(".popup__form_edit");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__description");
-const inputName = popupProfile.querySelector('.form-name[name="Jacques Cousteau"]');
-const inputJob = popupProfile.querySelector('.form-description[name="Explorer"]');
+const inputName = popupProfile.querySelector(".form-name");
+const inputJob = popupProfile.querySelector(".form-description");
 const closeButton = popupProfile.querySelector(".button-close");
 const closePopup = popupProfile.querySelector(".popup__overlay");
 
@@ -54,19 +54,7 @@ const cards = [
   },
 ];
 
-const renderCard = (name, link) => {
-  const template = document.querySelector("#elements-template").content;
-  const element = template.querySelector(".elements__container").cloneNode(true);
-  const imageElement = element.querySelector(".elements__image");
-  const titleElement = element.querySelector(".elements__title");
-  const buttonTrash = element.querySelector(".button-trash");
-  const buttonLike = element.querySelector(".button-like");
-  const openImage = element.querySelector(".elements__image")
-
-  titleElement.textContent = name;
-  imageElement.src = link;
-  imageElement.alt = "This is a picture of " + name;
-
+function cardButtons(buttonTrash, buttonLike, openImage, name, link, element) {
   buttonTrash.addEventListener("click", function () {
     element.remove();
   });
@@ -79,7 +67,22 @@ const renderCard = (name, link) => {
     document.querySelector(".popup__image-text").textContent = name;
     togglePopup(popupImage);
   });
+}
 
+const renderCard = (name, link) => {
+  const template = document.querySelector("#elements-template").content;
+  const element = template.querySelector(".elements__container").cloneNode(true);
+  const imageElement = element.querySelector(".elements__image");
+  const titleElement = element.querySelector(".elements__title");
+  const buttonTrash = element.querySelector(".button-trash");
+  const buttonLike = element.querySelector(".button-like");
+  const openImage = element.querySelector(".elements__image");
+
+  titleElement.textContent = name;
+  imageElement.src = link;
+  imageElement.alt = "This is a picture of " + name;
+
+  cardButtons(buttonTrash, buttonLike, openImage, name, link, element);
   container.prepend(element);
 };
 
@@ -154,16 +157,15 @@ closePopupImage.addEventListener("click", function () {
   togglePopup(popupImage);
 });
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') {
-    if (popupImage.classList.contains('popup__show')) {
-      togglePopup(popupImage);
-    }
-    if (popupAdd.classList.contains('popup__show')) {
-      togglePopup(popupAdd);
-    }
-    if (popupProfile.classList.contains('popup__show')) {
-      togglePopup(popupProfile);
-    }
+//Cerrar popup al presionar la tecla Escape
+function closePopups(event) {
+  if (event.key === "Escape") {
+    const popups = document.querySelectorAll(".popup");
+    popups.forEach((popup) => {
+      if (popup.classList.contains("popup__show")) {
+        togglePopup(popup);
+      }
+    });
   }
-});
+}
+document.addEventListener("keydown", closePopups);

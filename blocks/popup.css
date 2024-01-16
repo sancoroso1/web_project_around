@@ -68,7 +68,7 @@
 }
 
 .popup__image-opened {
-  max-width: 75vh;
+  max-width: 75vw;
   max-height: 75vh;
 }
 
@@ -154,10 +154,5 @@
     width: 240px;
     height: auto;
     z-index: 1;
-  }
-
-  .popup__image-opened {
-    width: 240px;
-    height: 299px;
   }
 }
