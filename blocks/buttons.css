@@ -1,0 +1,147 @@
+.profile__button {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  right: 0px;
+  top: 15px;
+  background-image: url(../images/button-edit.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  border-color: white;
+  cursor: pointer;
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+}
+
+.profile__add-button {
+  width: 150px;
+  height: 50px;
+  background-image: url(../images/button-new.png);
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position: center;
+  border-color: white;
+  cursor: pointer;
+  margin: auto;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+}
+
+.elements__heart {
+  border: none;
+  background-image: url(../images/button-like.png);
+  width: 21px;
+  height: 19px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.elements__heart:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.elements__black-heart {
+  background-image: url(../images/button-like-active.png);
+}
+
+.elements__trash {
+  background-image: url(../images/button-trash.png);
+  background-color: transparent;
+  border: none;
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+  padding: 0;
+  margin-top: 18px;
+  margin-left: 249px;
+  cursor: pointer;
+}
+
+.elements__trash:hover {
+  opacity: 0.6;
+}
+
+.popup__close-button {
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  background-image: url(../images/button-close.png);
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: -40px;
+  top: -40px;
+  background-color: transparent;
+  border: none;
+}
+
+.popup__close-button:hover {
+  opacity: 0.6;
+}
+
+.popup__save-button {
+  margin-top: 45px;
+  width: 358px;
+  height: 46px;
+  border-radius: 2px;
+  background: #000;
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.popup__save-button:hover {
+  opacity: 0.8;
+}
+
+.popup__save-button:disabled {
+  color: #ccc;
+  background: #fff;
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__button {
+    height: 18px;
+    width: 18px;
+    right: 15px;
+    top: 4px;
+  }
+
+  .profile__add-button {
+    width: 282px;
+    height: 50px;
+    border-radius: 2px;
+    background-image: url(../images/button-new-wide.png);
+  }
+
+  .popup__close-button_image {
+    width: 40px;
+    height: 40px;
+    right: -50px;
+    top: -50px;
+  }
+
+  .popup__close-button {
+    right: 0px;
+    top: -50px;
+  }
+
+  .popup__save-button {
+    width: 238px;
+    height: 46px;
+  }
+}
