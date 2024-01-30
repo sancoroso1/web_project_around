@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Around the US</title>
-  <link rel="stylesheet" href="./pages/index.css" />
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <header class="header">
-    <img src="./images/header__title.png" alt="Logo de encabezado" class="header__logo" />
+    <img src="./images/header__title.png" alt="Logo de encabezado" class="header__logo">
     <div class="header__line"></div>
   </header>
   <main class="content">
     <section class="profile">
-      <img src="./images/profile__picture.png" alt="Foto de perfil" class="profile__picture" />
+      <img src="./images/profile__picture.png" alt="Foto de perfil" class="profile__picture">
       <div class="profile__container">
         <h2 class="profile__name">Jacques Cousteau</h2>
         <button type="button" class="profile__button"></button>
@@ -21,10 +21,10 @@
       </div>
       <button type="button" class="profile__add-button"></button>
     </section>
-    <section class="elements">
+    <div class="elements">
       <ul class="elements__list">
       </ul>
-    </section>
+    </div>
   </main>
   <footer class="footer">
     <h4 class="footer__copyright">&#169; 2023 Santiago Correa FT TripleTen</h4>
@@ -35,10 +35,10 @@
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Edit profile</h2>
       <input type="text" name="name" id="input-name" placeholder="Name" minlength="2" maxlength="40" required
-        class="popup__input popup__input_name" />
+        class="popup__input popup__input_name">
       <span class="popup__line" id="input__error-name"></span>
       <input type="text" name="occupation" id="occupation" placeholder="Description" minlength="2" maxlength="200"
-        required class="popup__input popup__input_occupation" />
+        required class="popup__input popup__input_occupation">
       <span class="popup__line" id="input__error-occupation"></span>
       <button disabled type="submit" class="popup__save-button">Send</button>
     </form>
@@ -49,10 +49,10 @@
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">New place</h2>
       <input type="text" name="title" id="title" placeholder="Title" minlength="2" maxlength="30" required
-        class="title-input-error popup__input popup__input_title" />
+        class="title-input-error popup__input popup__input_title">
       <span class="popup__line" id="input__error-title"></span>
       <input type="url" name="link" id="link" placeholder="Link" minlength="7" required
-        class="popup__input popup__input_link" />
+        class="popup__input popup__input_link">
       <span class="popup__line" id="input__error-link"></span>
       <button type="submit" class="popup__save-button">Send</button>
     </form>
@@ -61,13 +61,13 @@
     <div class="popup__overlay"></div>
     <div class="popup__image-container">
       <button type="button" class="popup__close-button"></button>
-      <img src="" alt="" class="popup__picture" />
+      <img src="./images/image_crater-lake.png" alt="Crater Lake" class="popup__picture">
       <p class="popup__card-name"></p>
     </div>
   </div>
   <template id="card-template">
     <li class="elements__container">
-      <img class="elements__image" src=" " alt=" " />
+      <img class="elements__image" src="./images/image_crater-lake.png" alt="Crater Lake">
       <button class="elements__trash"></button>
       <div class="elements__description">
         <h2 class="elements__text"></h2>
