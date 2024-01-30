@@ -20,6 +20,9 @@
 * Utilizando JavaScript agregamos validación a los diferentes formularios, impidiendo así que se ingresen datos erroneos 
 * Se agregó la funcionalidad de cerrar la ventana emergente haciendo click fuera de ella.
 * Se agregó la funcionalidad de cerrar la ventana emergente presionando la tecla "Escape".
+### Sprint 8
+* Se refactoriza el codigo para así mejorar su orden y funcionalidad.
+* Se configura JavaScript modular.
 
 ## LINKS
 * [GIT Page](https://sancoroso1.github.io/web_project_around/)

@@ -1,33 +1,36 @@
-import { enableValidation } from "./validate.js";
-enableValidation();
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { validationConfig, popupImage, togglePopup } from "./utils.js";
 
-const container = document.querySelector(".elements__list");
-
-const buttonEdit = document.querySelector(".button-edit");
-const buttonAdd = document.querySelector(".button-new");
-
-const popupProfile = document.querySelector(".edit-profile");
-const formProfile = popupProfile.querySelector(".popup__form_edit");
+//variables para abrir y cerrar popup
+const buttonEdit = document.querySelector(".profile__button");
+const popupProfile = document.querySelector(".popup");
+const closeButton = document.querySelector(".popup__close-button");
+//varables para llenar formulario de nombre y ocupación
 const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__description");
-const inputName = popupProfile.querySelector(".form-name");
-const inputJob = popupProfile.querySelector(".form-description");
-const closeButton = popupProfile.querySelector(".button-close");
-const closePopup = popupProfile.querySelector(".popup__overlay");
+const profileOccupation = document.querySelector(".profile__about-me");
+const formProfile = document.querySelector(".popup__content");
+const inputName = popupProfile.querySelector(".popup__input_name");
+const inputOccupation = popupProfile.querySelector(".popup__input_occupation");
+//variables para llenar formulario de titulo y enlace
+const inputTitle = document.querySelector(".popup__input_title");
+const inputLink = document.querySelector(".popup__input_link");
+const pictureForm = document.querySelector(".popup__content_add");
+//variables para abrir y cerrar popup de profile__add-button
+const addButton = document.querySelector(".profile__add-button");
+const popupAdd = document.querySelector(".popup_add-button");
+const closeAddprofile = popupAdd.querySelector(".popup__close-button");
 
-const popupAdd = document.querySelector(".new-element");
-const formAdd = popupAdd.querySelector(".popup__form_add");
-const inputTitle = popupAdd.querySelector('.form-title[name="title"]');
-const inputLink = popupAdd.querySelector('.form-link[name="link"]');
-const closeButtonAdd = popupAdd.querySelector(".button-close");
-const closePopupAdd = popupAdd.querySelector(".popup__overlay");
+//variable botón corazón
+const buttonHeart = document.querySelector(".elements__heart");
 
-const popupImage = document.querySelector(".popup_content_image");
-const closeButtonImage = popupImage.querySelector(".button-close");
-const closePopupImage = popupImage.querySelector(".popup__overlay");
+//variable para cerrar popup de imágen
+const closeImage = popupImage.querySelector(".popup__close-button");
+//variable de overlay para poder cerrar popups con click fuera de formulario
+const overlays = document.querySelectorAll(".popup__overlay");
 
-//Creacion de tarjetas
-const cards = [
+// array cards
+const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
@@ -54,118 +57,70 @@ const cards = [
   },
 ];
 
-function cardButtons(buttonTrash, buttonLike, openImage, name, link, element) {
-  buttonTrash.addEventListener("click", function () {
-    element.remove();
-  });
-  buttonLike.addEventListener("click", function () {
-    buttonLike.classList.toggle("button-like-black");
-  });
-  openImage.addEventListener("click", function () {
-    document.querySelector(".popup__image-opened").src = link;
-    document.querySelector(".popup__image-opened").alt = "This is a picture of " + name;
-    document.querySelector(".popup__image-text").textContent = name;
-    togglePopup(popupImage);
-  });
-}
+//container de cards <section class ="elements" </section>
+const elements = document.querySelector(".elements");
 
-const renderCard = (name, link) => {
-  const template = document.querySelector("#elements-template").content;
-  const element = template.querySelector(".elements__container").cloneNode(true);
-  const imageElement = element.querySelector(".elements__image");
-  const titleElement = element.querySelector(".elements__title");
-  const buttonTrash = element.querySelector(".button-trash");
-  const buttonLike = element.querySelector(".button-like");
-  const openImage = element.querySelector(".elements__image");
-
-  titleElement.textContent = name;
-  imageElement.src = link;
-  imageElement.alt = "This is a picture of " + name;
-
-  cardButtons(buttonTrash, buttonLike, openImage, name, link, element);
-  container.prepend(element);
-};
-
-cards.forEach(function (item) {
-  renderCard(item.name, item.link);
+//Iterar función de flecha
+initialCards.forEach((item) => {
+  const newCard = new Card(item.name, item.link, "#card-template");
+  elements.append(newCard.generateCard());
 });
 
-function togglePopup(popup) {
-  popup.classList.toggle("popup__show");
-}
-
-inputName.value = profileName.textContent;
-inputJob.value = profileJob.textContent;
-
-//Abrir popup para editar nombre y descripcion
+//evento para abrir popup de profile
 buttonEdit.addEventListener("click", function () {
+  inputName.value = profileName.textContent;
+  inputOccupation.value = profileOccupation.textContent;
   togglePopup(popupProfile);
 });
 
-//Guardar y cerrar popup para editar nombre y descripcion
+//evento para cerrar popup de profile
+closeButton.addEventListener("click", function () {
+  togglePopup(popupProfile);
+});
+
+//evento para cerrar popup de imágen
+closeImage.addEventListener("click", function () {
+  togglePopup(popupImage);
+});
+
+//evento para cambiar nombre y ocupación
 formProfile.addEventListener("submit", function (event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value;
+  profileOccupation.textContent = inputOccupation.value;
+  //formProfile.reset();
   togglePopup(popupProfile);
 });
 
-//Cerrar popup para editar nombre y descripcion
-closeButton.addEventListener("click", function () {
-  togglePopup(popupProfile);
-  formProfile.reset();
-});
-
-//Cerrar popup para editar nombre y descripcion al hacer click fuera del popup
-closePopup.addEventListener("click", function () {
-  togglePopup(popupProfile);
-  formProfile.reset();
-});
-
-//Abrir popup para añadir una imagen
-buttonAdd.addEventListener("click", function () {
-  togglePopup(popupAdd);
-});
-
-//Guardar y cerrar popup para añadir una imagen
-formAdd.addEventListener("submit", function (event) {
+//evento para agregar imágen y su título
+pictureForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  renderCard(inputTitle.value, inputLink.value);
-  formAdd.reset();
+  const newCard = new Card(inputTitle.value, inputLink.value, "#card-template");
+  elements.prepend(newCard.generateCard());
+  //pictureForm.reset();
   togglePopup(popupAdd);
 });
 
-//Cerrar popup para añadir una imagen
-closeButtonAdd.addEventListener("click", function () {
+//evento para abrir popup addprofile
+addButton.addEventListener("click", function () {
   togglePopup(popupAdd);
-  formAdd.reset();
 });
 
-//Cerrar popup para añadir una imagen al hacer click fuera del popup
-closePopupAdd.addEventListener("click", function () {
+//evento para cerrar popup addprofile
+closeAddprofile.addEventListener("click", function () {
   togglePopup(popupAdd);
-  formAdd.reset();
 });
 
-//Cerrar popup imagen ampliada
-closeButtonImage.addEventListener("click", function () {
-  togglePopup(popupImage);
+//función de flecha para cerrar popups con click apartir de variable overlays
+overlays.forEach((overlay) => {
+  overlay.addEventListener("click", function (event) {
+    const popup = overlay.closest(".popup");
+    togglePopup(popup);
+  });
 });
 
-//Cerrar popup imagen ampliada al hacer click fuera del popup
-closePopupImage.addEventListener("click", function () {
-  togglePopup(popupImage);
-});
+const FormValidatorProfile = new FormValidator(validationConfig, formProfile);
+FormValidatorProfile.enableValidation();
 
-//Cerrar popup al presionar la tecla Escape
-function closePopups(event) {
-  if (event.key === "Escape") {
-    const popups = document.querySelectorAll(".popup");
-    popups.forEach((popup) => {
-      if (popup.classList.contains("popup__show")) {
-        togglePopup(popup);
-      }
-    });
-  }
-}
-document.addEventListener("keydown", closePopups);
+const formValidatorCard = new FormValidator(validationConfig, pictureForm);
+formValidatorCard.enableValidation();

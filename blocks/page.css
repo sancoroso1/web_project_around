@@ -1,6 +1,10 @@
-body {
-  background-color: #000000;
-  color: white;
-  margin: 0 auto;
-  font-family: Inter;
+.page {
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter";
+  background-color: #000;
 }
