@@ -10,6 +10,7 @@ export function toggleLike(buttonHeart) {
 
 export function togglePopup(popup) {
   popup.classList.toggle("popup_hide");
+  document.addEventListener("keydown", closePopups);
 }
 
 export function openPopup(popupImage, link, name) {
@@ -24,11 +25,12 @@ export function closePopups(event) {
     popups.forEach((popup) => {
       if (popup.classList.contains("popup_hide")) {
         togglePopup(popup);
+        document.removeEventListener("keydown", closePopups);
       }
     });
   }
 }
-document.addEventListener("keydown", closePopups);
+//document.addEventListener("keydown", closePopups);
 
 export const validationConfig = {
   formSelector: ".popup__content",
