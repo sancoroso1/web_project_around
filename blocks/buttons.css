@@ -25,7 +25,7 @@
   background-position: center;
   border-color: white;
   cursor: pointer;
-  margin: auto;
+  margin: auto 0px auto auto;
 }
 
 .profile__add-button:hover {
@@ -126,6 +126,7 @@
     height: 50px;
     border-radius: 2px;
     background-image: url(../images/button-new-wide.png);
+    margin: auto;
   }
 
   .popup__close-button_image {

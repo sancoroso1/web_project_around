@@ -102,7 +102,7 @@ overlays.forEach((overlay) => {
 });
 
 const FormValidatorProfile = new FormValidator(validationConfig, formProfile);
-FormValidatorProfile.enableValidation();
+FormValidatorProfile.enableValidation(validationConfig);
 
 const formValidatorCard = new FormValidator(validationConfig, pictureForm);
-formValidatorCard.enableValidation();
+formValidatorCard.enableValidation(validationConfig);

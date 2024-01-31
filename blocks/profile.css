@@ -12,7 +12,8 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  margin: 42px auto 30px auto;
+  /* margin: 42px auto 30px auto; */
+  margin-bottom: 30px;
 }
 
 .profile__container {
@@ -37,27 +38,30 @@
 }
 
 .profile__about-me {
+  width: 282px;
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
   font-style: normal;
   margin: 0;
-  padding-bottom: 36px;
+  margin-bottom: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
 }
 
 @media screen and (min-width: 768px) {
   .profile {
     height: 120px;
     padding-top: 40px;
-    padding-left: 19px;
     flex-direction: row;
   }
 
   .profile__picture {
     margin-right: 30px;
     margin-left: 0;
+    margin-bottom: auto;
   }
 
   .profile__container {
@@ -76,5 +80,7 @@
   .profile__about-me {
     width: 415px;
     font-size: 18px;
+    margin-bottom: 0px;
+    text-align: left;
   }
 }

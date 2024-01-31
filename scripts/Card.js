@@ -14,7 +14,6 @@ export default class Card {
   }
 
   _getTemplate() {
-    //valores para card-template
     const cardTemplate = document.querySelector(this.templateSelector).content;
     const cardElement = cardTemplate
       .querySelector(".elements__container")
@@ -22,7 +21,7 @@ export default class Card {
     cardElement.querySelector(".elements__text").textContent = this.name;
     const cardImage = cardElement.querySelector(".elements__image");
     cardImage.src = this.link;
-    cardImage.setAttribute("alt", name);
+    cardImage.alt = this.name;
 
     return cardElement;
   }
