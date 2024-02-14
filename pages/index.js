@@ -1,6 +1,6 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import { validationConfig, popupImage, togglePopup } from "./utils.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { validationConfig, popupImage, togglePopup } from "../components/utils.js";
 
 const buttonEdit = document.querySelector(".profile__button");
 const popupProfile = document.querySelector(".popup");

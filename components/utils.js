@@ -30,7 +30,6 @@ export function closePopups(event) {
     });
   }
 }
-//document.addEventListener("keydown", closePopups);
 
 export const validationConfig = {
   formSelector: ".popup__content",
