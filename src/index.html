@@ -34,9 +34,9 @@
     <h4 class="footer__copyright">&#169; 2023 Santiago Correa FT TripleTen</h4>
   </footer>
 
-  <div class="popup">
+  <div class="popup" id="profile__popup">
     <div class="popup__overlay"></div>
-    <form class="popup__content" novalidate>
+    <form class="form popup__content form_profile" novalidate>
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">Edit profile</h2>
       <input type="text" name="name" id="input-name" placeholder="Name" minlength="2" maxlength="40" required
@@ -49,9 +49,9 @@
     </form>
   </div>
 
-  <div class="popup popup_add-button">
+  <div class="popup popup_add-button" id="add__popup">
     <div class="popup__overlay"></div>
-    <form class="popup__content popup__content_add" novalidate>
+    <form class="form popup__content popup__content_add form_place" novalidate>
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__title">New place</h2>
       <input type="text" name="title" id="title" placeholder="Title" minlength="2" maxlength="30" required
@@ -64,7 +64,7 @@
     </form>
   </div>
 
-  <div class="popup popup_image">
+  <div class="popup popup_image" id="image-popup">
     <div class="popup__overlay"></div>
     <div class="popup__image-container">
       <button type="button" class="popup__close-button"></button>

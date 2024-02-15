@@ -39,9 +39,18 @@ export function handlePreviewPicture(link, name) {
 }
 
 export function handleLikeIcon(cardElement) {
-  cardElement.querySelector('.card__like').classList.toggle('card__like_active');
+  cardElement.querySelector('.elements__heart').classList.toggle('elements__black-heart');
 }
 
 export function handleDeleteCard(cardElement) {
   cardElement.remove();
 }
+
+export const validationConfig = {
+  formSelector: ".popup__content",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonclass: ".popup__save-button:disabled",
+  inputErrorClass: ".popup__input:invalid",
+  errorClass: ".popup__line",
+};

@@ -9,9 +9,9 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document.querySelector(this._selector).content.querySelector('.card').cloneNode(true);
-    const image = cardElement.querySelector('.card__image');
-    const title = cardElement.querySelector('.card__text');
+    const cardElement = document.querySelector(this._selector).content.querySelector('.elements__container').cloneNode(true);
+    const image = cardElement.querySelector('.elements__image');
+    const title = cardElement.querySelector('.elements__text');
     title.textContent = this._title;
     image.src = this._link;
     image.alt = this._title;
@@ -19,12 +19,12 @@ export default class Card {
   }
 
   _setEventListeners(node) {
-    node.querySelector('.card__image').addEventListener('click', (event) => {
+    node.querySelector('.elements__image').addEventListener('click', (event) => {
       this._handleCardClick(this._link, this._title);
     })
 
-    const likeButton = node.querySelector(".card__like");
-    const deleteButton = node.querySelector(".card__trash-icon");
+    const likeButton = node.querySelector(".elements__heart");
+    const deleteButton = node.querySelector(".elements__trash");
 
     likeButton.addEventListener('click', event => {
       handleLikeIcon(node);

@@ -1,108 +1,69 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { validationConfig, popupImage, togglePopup } from "../components/utils.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import { initialCards, formConfig } from "../components/constants.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import { validationConfig } from "../components/utils.js";
 
-const buttonEdit = document.querySelector(".profile__button");
-const popupProfile = document.querySelector(".popup");
-const closeButton = document.querySelector(".popup__close-button");
-
+const formProfile = document.querySelector(".form_profile");
+const btnSave = document.querySelector(".profile__button");
+const btnAddItem = document.querySelector(".profile__add-button");
+const inputName = document.querySelector("#input-name");
+const inputProfession = document.querySelector("#occupation");
+const formUrl = document.querySelector(".form_place");
 const profileName = document.querySelector(".profile__name");
-const profileOccupation = document.querySelector(".profile__about-me");
-const formProfile = document.querySelector(".popup__content");
-const inputName = popupProfile.querySelector(".popup__input_name");
-const inputOccupation = popupProfile.querySelector(".popup__input_occupation");
+const profileJob = document.querySelector(".profile__about-me");
+const popupObjImage = new PopupWithImage('#image-popup');
+const popupObjProfile = new PopupWithForm('#profile__popup', handleProfileFormSubmit)
+const popupObjAddCard = new PopupWithForm('#add__popup', handleAddFormSubmit)
 
-const inputTitle = document.querySelector(".popup__input_title");
-const inputLink = document.querySelector(".popup__input_link");
-const pictureForm = document.querySelector(".popup__content_add");
+popupObjImage.setEventListeners();
+popupObjProfile.setEventListeners();
+popupObjAddCard.setEventListeners();
 
-const addButton = document.querySelector(".profile__add-button");
-const popupAdd = document.querySelector(".popup_add-button");
-const closeAddprofile = popupAdd.querySelector(".popup__close-button");
-const buttonHeart = document.querySelector(".elements__heart");
-const closeImage = popupImage.querySelector(".popup__close-button");
-const overlays = document.querySelectorAll(".popup__overlay");
+const cardsSection = new Section({
+  items: initialCards,
+  renderer: function (item) {
+    const newCard = new Card(item.link, item.name, "#card-template", {
+      handleCardClick: (link, title) => {
+        popupObjImage.open({ src: link, alt: title });
+      }
+    });
+    cardsSection.addItem(newCard.generateCard())
+  }
+}, '.elements__list');
 
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
+cardsSection.render();
 
-const elements = document.querySelector(".elements__list");
+const userInfo = new UserInfo({ nameSelector: profileName, jobSelector: profileJob });
 
-initialCards.forEach((item) => {
-  const newCard = new Card(item.name, item.link, "#card-template");
-  elements.append(newCard.generateCard());
-});
+function handleProfileFormSubmit({ name, occupation }) {
+  userInfo.setUserInfo({ name, job: occupation });
+}
 
-buttonEdit.addEventListener("click", function () {
-  inputName.value = profileName.textContent;
-  inputOccupation.value = profileOccupation.textContent;
-  togglePopup(popupProfile);
-});
-
-closeButton.addEventListener("click", function () {
-  togglePopup(popupProfile);
-});
-
-closeImage.addEventListener("click", function () {
-  togglePopup(popupImage);
-});
-
-formProfile.addEventListener("submit", function (event) {
-  event.preventDefault();
-  profileName.textContent = inputName.value;
-  profileOccupation.textContent = inputOccupation.value;
-  togglePopup(popupProfile);
-});
-
-pictureForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const newCard = new Card(inputTitle.value, inputLink.value, "#card-template");
-  elements.prepend(newCard.generateCard());
-  togglePopup(popupAdd);
-  pictureForm.reset();
-});
-
-addButton.addEventListener("click", function () {
-  togglePopup(popupAdd);
-});
-
-closeAddprofile.addEventListener("click", function () {
-  togglePopup(popupAdd);
-});
-
-overlays.forEach((overlay) => {
-  overlay.addEventListener("click", function (event) {
-    const popup = overlay.closest(".popup");
-    togglePopup(popup);
+function handleAddFormSubmit({ title, link }) {
+  const newCard = new Card(link, title, "#card-template", {
+    handleCardClick: () => {
+      popupObjImage.open({ src: link, alt: title });
+    }
   });
+  cardsSection.addItem(newCard.generateCard(), false);
+}
+
+btnSave.addEventListener("click", () => {
+  popupObjProfile.open();
+  inputName.value = profileName.textContent.trim();
+  inputProfession.value = profileJob.textContent.trim();
+});
+
+btnAddItem.addEventListener("click", function () {
+  popupObjAddCard.open();
 });
 
 const FormValidatorProfile = new FormValidator(validationConfig, formProfile);
 FormValidatorProfile.enableValidation(validationConfig);
 
-const formValidatorCard = new FormValidator(validationConfig, pictureForm);
+const formValidatorCard = new FormValidator(validationConfig);
 formValidatorCard.enableValidation(validationConfig);
