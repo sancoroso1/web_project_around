@@ -23,6 +23,10 @@
 ### Sprint 8
 * Se refactoriza el codigo para así mejorar su orden y funcionalidad.
 * Se configura JavaScript modular.
+### Sprint 9
+* Se refactoriza el codigo para así mejorar su orden y funcionalidad.
+* Se configuran nuevas Clases para así mejorar el proyecto.
+* Se configura Webpack.
 
 ## LINKS
 * [GIT Page](https://sancoroso1.github.io/web_project_around/)
