@@ -27,6 +27,9 @@
 * Se refactoriza el codigo para así mejorar su orden y funcionalidad.
 * Se configuran nuevas Clases para así mejorar el proyecto.
 * Se configura Webpack.
+### Sprint 10
+* Se agregan las API para conectar el proyecto al servidor y así mejorar el alcance de la página web.
+* Se refactoriza el codigo para mejorar su funcionalidad con ayuda de la programacion asincrona.
 
 ## LINKS
 * [GIT Page](https://sancoroso1.github.io/web_project_around/)
