@@ -1,70 +1,149 @@
-import "./index.css";
+import "../pages/index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import { initialCards, formConfig } from "../components/constants.js";
-import Section from "../components/Section.js";
-import UserInfo from "../components/UserInfo.js";
-import PopupWithForm from "../components/PopupWithForm.js";
 import { validationConfig } from "../components/utils.js";
+import Section from "../components/Section.js";
+import {
+  formValidaProfile,
+  formValidaPlace,
+  buttonAdd,
+  nameProfession,
+  profesion,
+  buttonEdit,
+  imagePopup,
+  popupWithFormAdd,
+  popupWithFormEdit,
+  userInfo,
+  profileName,
+  profileAbout,
+  buttonSubmitCard,
+  popupSubmitProfile,
+  popupWithFormAvatar,
+  headerAvatar,
+  avatar,
+  popupSubmitAvatar,
+  formValidaAvatar,
+} from "../components/constants.js";
+let defaultCardList;
 
-const formProfile = document.querySelector(".form_profile");
-const btnSave = document.querySelector(".profile__button");
-const btnAddItem = document.querySelector(".profile__add-button");
-const inputName = document.querySelector("#input-name");
-const inputProfession = document.querySelector("#occupation");
-const formUrl = document.querySelector(".form_place");
-const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__about-me");
-const popupObjImage = new PopupWithImage('#image-popup');
-const popupObjProfile = new PopupWithForm('#profile__popup', handleProfileFormSubmit)
-const popupObjAddCard = new PopupWithForm('#add__popup', handleAddFormSubmit)
+import { api } from "../components/Api.js";
 
-popupObjImage.setEventListeners();
-popupObjProfile.setEventListeners();
-popupObjAddCard.setEventListeners();
-
-const cardsSection = new Section({
-  items: initialCards,
-  renderer: function (item) {
-    const newCard = new Card(item.link, item.name, "#card-template", {
-      handleCardClick: (link, title) => {
-        popupObjImage.open({ src: link, alt: title });
-      }
-    });
-    cardsSection.addItem(newCard.generateCard())
-  }
-}, '.elements__list');
-
-cardsSection.render();
-
-const userInfo = new UserInfo({ nameSelector: profileName, jobSelector: profileJob });
-
-function handleProfileFormSubmit({ name, occupation }) {
-  userInfo.setUserInfo({ name, job: occupation });
+function popupButtonAdd(event) {
+  event.preventDefault();
+  popupWithFormAdd.open();
 }
 
-function handleAddFormSubmit({ title, link }) {
-  const newCard = new Card(link, title, "#card-template", {
-    handleCardClick: () => {
-      popupObjImage.open({ src: link, alt: title });
-    }
+api.getUserInfo().then((userData) => {
+  profileName.textContent = userData.name;
+  profileAbout.textContent = userData.about;
+  avatar.src = userData.avatar;
+});
+
+function openProfile() {
+  api.getUserInfo().then((userData) => {
+    nameProfession.value = userData.name;
+    profesion.value = userData.about;
+    new FormValidator(validationConfig, formValidaProfile);
+    popupWithFormEdit.open();
   });
-  cardsSection.addItem(newCard.generateCard(), false);
+}
+function openProfileAvatar() {
+  new FormValidator(validationConfig, formValidaAvatar);
+  popupWithFormAvatar.open();
 }
 
-btnSave.addEventListener("click", () => {
-  popupObjProfile.open();
-  inputName.value = profileName.textContent.trim();
-  inputProfession.value = profileJob.textContent.trim();
+export function formSubmitHandlerAvatar(formValues) {
+  const link = formValues["input-url"];
+  popupSubmitAvatar.textContent = "Saving...";
+  api
+    .updateAvatar(link)
+    .then((userData) => {
+      avatar.src = userData.avatar;
+      popupWithFormAvatar.close();
+      popupSubmitAvatar.textContent = "Save";
+    })
+    .catch((error) => {
+      console.error("Something went wrong updating Avatar:", error);
+    });
+}
+
+export function formSubmitHandler(formValues) {
+  const name = formValues["input-name"];
+  const about = formValues["input-job"];
+  popupSubmitProfile.textContent = "Saving...";
+  api
+    .updateUserInfo(name, about)
+    .then((userData) => {
+      userInfo.setUserInfo({
+        name: userData.name,
+        job: userData.about,
+      });
+      popupSubmitProfile.textContent = "Save";
+    })
+    .catch((error) => {
+      console.error("Something went wrong updating Profile Info:", error);
+    });
+
+  popupWithFormEdit.close();
+}
+
+export function formSubmitHandlerAdd(formValues) {
+  const name = formValues["input-nameadd"];
+  const link = formValues["input-url"];
+
+  buttonSubmitCard.textContent = "Saving...";
+
+  api
+    .getNewCards(name, link)
+    .then((newCardData) => {
+      const { name, link, _id, likes } = newCardData;
+      const newCard = new Card(
+        name,
+        link,
+        _id,
+        likes,
+        "#template__card",
+        imagePopup.open
+      ).createCardElement();
+
+      defaultCardList.setItem(newCard);
+
+      popupWithFormEdit.close();
+      buttonSubmitCard.textContent = "Create";
+      popupWithFormAdd.close();
+    })
+    .catch((error) => {
+      console.error("Something went wrong creating a new card:", error);
+    });
+}
+
+buttonAdd.addEventListener("click", popupButtonAdd);
+buttonEdit.addEventListener("click", openProfile);
+headerAvatar.addEventListener("click", openProfileAvatar);
+
+api.getInitialCards().then((cards) => {
+  defaultCardList = new Section(
+    {
+      data: cards,
+      renderer: (item) => {
+        const { name, link, _id, likes } = item;
+        const card = new Card(
+          name,
+          link,
+          _id,
+          likes,
+          "#template__card",
+          imagePopup.open
+        );
+        const cardElement = card.createCardElement();
+        defaultCardList.setItem(cardElement);
+      },
+    },
+    ".cards"
+  );
+
+  defaultCardList.renderItems();
+  popupWithFormEdit.setEventListeners();
+  popupWithFormAdd.setEventListeners();
 });
-
-btnAddItem.addEventListener("click", function () {
-  popupObjAddCard.open();
-});
-
-const FormValidatorProfile = new FormValidator(validationConfig, formProfile);
-FormValidatorProfile.enableValidation(validationConfig);
-
-const formValidatorCard = new FormValidator(validationConfig);
-formValidatorCard.enableValidation(validationConfig);
+new FormValidator(validationConfig, formValidaPlace);

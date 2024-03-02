@@ -1,42 +1,92 @@
-import { handleLikeIcon, handleDeleteCard } from "./utils.js";
+import { closeButtonCards, buttonLike } from "./utils.js";
+import { api } from "./Api.js";
+import { miPopupConConfirmacion } from "./constants.js";
 
 export default class Card {
-  constructor(link, title, selector, { handleCardClick }) {
-    this._link = link;
-    this._title = title;
-    this._selector = selector;
+  constructor(name, link, id, likes, selector, handleCardClick) {
+    this.name = name;
+    this.link = link;
+    this.selector = selector;
     this._handleCardClick = handleCardClick;
+    this.id = id;
+    this.likes = likes;
   }
 
-  _getTemplate() {
-    const cardElement = document.querySelector(this._selector).content.querySelector('.elements__container').cloneNode(true);
-    const image = cardElement.querySelector('.elements__image');
-    const title = cardElement.querySelector('.elements__text');
-    title.textContent = this._title;
-    image.src = this._link;
-    image.alt = this._title;
-    return cardElement;
-  }
+  _eventListener(clone) {
+    this.clone
+      .querySelector(".button__type-like")
+      .addEventListener("click", () => this._likeCard());
 
-  _setEventListeners(node) {
-    node.querySelector('.elements__image').addEventListener('click', (event) => {
-      this._handleCardClick(this._link, this._title);
-    })
+    this.clone
+      .querySelector(".button__delete")
+      .addEventListener("click", (element) => this._deleteCard(element));
 
-    const likeButton = node.querySelector(".elements__heart");
-    const deleteButton = node.querySelector(".elements__trash");
-
-    likeButton.addEventListener('click', event => {
-      handleLikeIcon(node);
+    this.clone.querySelector(".images__card").addEventListener("click", () => {
+      this._handleCardClick(this.name, this.link);
     });
-    deleteButton.addEventListener('click', event => {
-      handleDeleteCard(node);
-    })
+    return clone;
   }
 
-  generateCard() {
-    this._element = this._getTemplate();
-    this._setEventListeners(this._element);
-    return this._element;
+  _deleteCard(element) {
+    const confirmDelete = () => {
+      const cardElement = element.target.closest(".card");
+      const deleteButton = document.querySelector(".popup__confirm-button");
+      deleteButton.textContent = "Processing...";
+      api
+        .deleteCard(this.id)
+        .then(() => {
+          cardElement.remove();
+          deleteButton.textContent = "Confirm";
+        })
+        .catch((error) =>
+          console.error("Something went wrong deleting:", error)
+        );
+    };
+    miPopupConConfirmacion.setConfirmAction(confirmDelete);
+    miPopupConConfirmacion.open();
+  }
+
+  _likeCard() {
+    const isLiked = this.likeButton.classList.contains("button__like-active");
+    api
+      .likeCard(this.id, isLiked)
+      .then((data) => {
+        this.likeButton.classList.toggle("button__like-active", !isLiked);
+        this.likeButton.classList.toggle("button__like", !isLiked);
+        this.likeCountElement.textContent = data.likes.length;
+      })
+      .catch((error) =>
+        console.error("Something went wrong with Like:", error)
+      );
+  }
+
+  createCardElement() {
+    this.card = document.querySelector(this.selector);
+    this.clone = this.card.content.cloneNode(true);
+    this.likeButton = this.clone.querySelector(".button__type-like");
+    this.likeCountElement = this.clone.querySelector(".card__likes");
+    this._setAttributes();
+    this._setTextContent();
+    this._eventListener();
+    this._setLikes();
+    return this.clone;
+  }
+
+  _setAttributes() {
+    const img = this.clone.querySelector("img");
+    img.setAttribute("src", this.link);
+    img.setAttribute("alt", this.name);
+  }
+
+  _setTextContent() {
+    this.clone.querySelector(".card__text").textContent = this.name;
+  }
+
+  _setLikes() {
+    this.likeCountElement.textContent = this.likes.length;
+    if (this.likes.length > 0) {
+      this.likeButton.classList.toggle("button__like", true);
+      this.likeButton.classList.add("button__like-active", true);
+    }
   }
 }

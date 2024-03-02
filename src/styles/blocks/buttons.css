@@ -1,40 +1,33 @@
-.profile__button {
-  position: absolute;
-  height: 24px;
-  width: 24px;
-  right: 0px;
-  top: 15px;
-  background-image: url(../images/button-edit.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: black;
-  border-color: white;
-  cursor: pointer;
-}
-
-.profile__button:hover {
-  opacity: 0.6;
-}
-
-.profile__add-button {
+.profile__button-add {
   width: 150px;
   height: 50px;
-  background-image: url(../images/button-new.png);
-  background-repeat: no-repeat;
-  background-color: black;
-  background-position: center;
-  border-color: white;
+  background: #000;
+  border: 1px solid #fff;
+  color: white;
   cursor: pointer;
-  margin: auto 0px auto auto;
+  margin: auto;
+  position: relative;
+  background: url(../images/add_button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.profile__add-button:hover {
-  opacity: 0.6;
+.profile__button-edit {
+  width: 24px;
+  height: 24px;
+  background: #000;
+  border: 1px solid #fff;
+  color: white;
+  cursor: pointer;
+  margin-left: 18px;
+  position: relative;
+  background: url(../images/edit_button.svg);
 }
 
-.elements__heart {
+.button__type-like {
+  background: url(../images/button_like.svg) no-repeat;
+  cursor: pointer;
   border: none;
-  background-image: url(../images/button-like.png);
   width: 21px;
   height: 19px;
   background-size: contain;
@@ -42,37 +35,20 @@
   background-color: transparent;
 }
 
-.elements__heart:hover {
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.elements__black-heart {
-  background-image: url(../images/button-like-active.png);
-}
-
-.elements__trash {
-  background-image: url(../images/button-trash.png);
-  background-color: transparent;
-  border: none;
-  width: 18px;
-  height: 19.3px;
-  position: absolute;
-  padding: 0;
-  margin-top: 18px;
-  margin-left: 249px;
-  cursor: pointer;
-}
-
-.elements__trash:hover {
+.button__type-like:hover {
   opacity: 0.6;
 }
 
-.popup__close-button {
+.button__like {
+  background: url(../images/like.svg);
+  opacity: 1;
+}
+
+.button_close {
+  background: url(../images/close_button.svg) no-repeat center;
   position: absolute;
   z-index: 1;
   cursor: pointer;
-  background-image: url(../images/button-close.png);
   width: 40px;
   height: 40px;
   background-repeat: no-repeat;
@@ -83,66 +59,79 @@
   border: none;
 }
 
-.popup__close-button:hover {
-  opacity: 0.6;
-}
-
-.popup__save-button {
-  margin-top: 45px;
-  width: 358px;
-  height: 46px;
-  border-radius: 2px;
-  background: #000;
-  color: #fff;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  cursor: pointer;
-}
-
-.popup__save-button:hover {
-  opacity: 0.8;
-}
-
-.popup__save-button:disabled {
-  color: #ccc;
-  background: #fff;
-  cursor: default;
+.button_close:hover {
   opacity: 0.5;
 }
 
-@media screen and (max-width: 767px) {
-  .profile__button {
-    height: 18px;
-    width: 18px;
-    right: 15px;
-    top: 4px;
+.button__delete {
+  background: url(../images/delete_button.svg) no-repeat;
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: none;
+  position: absolute;
+  top: 18px;
+  left: 247px;
+}
+
+.button__delete:hover {
+  opacity: 0.5;
+}
+
+.profile__buttonAvatar {
+  cursor: pointer;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  border: transparent;
+  padding: 0px;
+  border-radius: 50%;
+}
+
+.profile__buttonAvatar:hover {
+  background: url(../images/edit_button.svg);
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.popup__button-typeclose {
+  background: url(../images/close_button.svg) no-repeat center;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  right: -40px;
+  top: -40px;
+  background-color: transparent;
+  border: none;
+}
+
+.popup__button-typesave {
+  width: 358px;
+  height: 50.152px;
+  border-radius: 2px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popup__button-typesave:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .button_close {
+    top: -8%;
+    right: -19px;
   }
 
-  .profile__add-button {
+  .profile__button-add {
     width: 282px;
     height: 50px;
-    border-radius: 2px;
-    background-image: url(../images/button-new-wide.png);
-    margin: auto;
-  }
-
-  .popup__close-button_image {
-    width: 40px;
-    height: 40px;
-    right: -50px;
-    top: -50px;
-  }
-
-  .popup__close-button {
-    right: 0px;
-    top: -50px;
-  }
-
-  .popup__save-button {
-    width: 238px;
-    height: 46px;
   }
 }

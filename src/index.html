@@ -3,76 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Around the U.S.</title>
+  <title>Web Project Around the U.S.</title>
 </head>
-<body class="page">
+<body class="body">
   <header class="header">
-    <img src="<%=require('./styles/images/header__title.png')%>" alt="Logo de encabezado" class="header__logo">
-    <div class="header__line"></div>
+    <img class="header__logo" src="<%=require('./styles/images/logo.svg')%>" alt="Around">
   </header>
-  <main class="content">
+  <main class="container">
     <section class="profile">
-      <img src="<%=require('./styles/images/profile__picture.png')%>" alt="Foto de perfil" class="profile__picture">
-      <div class="profile__container">
-        <h2 class="profile__name">Jacques Cousteau</h2>
-        <button type="button" class="profile__button"></button>
-        <p class="profile__about-me">Explorer</p>
+      <div class="profile__overlay">
+        <button class="profile__buttonAvatar"><img class="profile__avatar" src="." alt="Around"></button>
       </div>
-      <button type="button" class="profile__add-button"></button>
+      <div class="profile__edit">
+        <div class="profile__container">
+          <h1 class="profile__name"></h1>
+          <button class="profile__button-edit"></button>
+        </div>
+        <p class="profile__profession"></p>
+      </div>
+      <button class="profile__button-add"></button>
     </section>
-    <div class="elements">
-      <ul class="elements__list">
-      </ul>
-    </div>
+    <section class="cards">
+    </section>
   </main>
   <footer class="footer">
-    <h4 class="footer__copyright">&#169; 2023 Santiago Correa FT TripleTen</h4>
+    <h2 class="footer__text">&#169; 2023 Santiago Correa FT TripleTen</h2>
   </footer>
-  <div class="popup" id="profile__popup">
-    <div class="popup__overlay"></div>
-    <form class="form popup__content form_profile" novalidate>
-      <button type="button" class="popup__close-button"></button>
-      <h2 class="popup__title">Edit profile</h2>
-      <input type="text" name="name" id="input-name" placeholder="Name" minlength="2" maxlength="40" required
-        class="popup__input popup__input_name">
-      <span class="popup__line" id="input__error-name"></span>
-      <input type="text" name="occupation" id="occupation" placeholder="Description" minlength="2" maxlength="200"
-        required class="popup__input popup__input_occupation">
-      <span class="popup__line" id="input__error-occupation"></span>
-      <button disabled type="submit" class="popup__save-button">Send</button>
-    </form>
-  </div>
-  <div class="popup popup_add-button" id="add__popup">
-    <div class="popup__overlay"></div>
-    <form class="form popup__content popup__content_add form_place" novalidate>
-      <button type="button" class="popup__close-button"></button>
-      <h2 class="popup__title">New place</h2>
-      <input type="text" name="title" id="title" placeholder="Title" minlength="2" maxlength="30" required
-        class="title-input-error popup__input popup__input_title">
-      <span class="popup__line" id="input__error-title"></span>
-      <input type="url" name="link" id="link" placeholder="Link" minlength="7" required
-        class="popup__input popup__input_link">
-      <span class="popup__line" id="input__error-link"></span>
-      <button type="submit" class="popup__save-button">Send</button>
-    </form>
-  </div>
-  <div class="popup popup_image" id="image-popup">
-    <div class="popup__overlay"></div>
-    <div class="popup__image-container">
-      <button type="button" class="popup__close-button"></button>
-      <img src="<%=require('./styles/images/image_crater-lake.png')%>" alt="Crater Lake" class="popup__picture">
-      <p class="popup__card-name"></p>
+  <div class="popup" id="popup__edit">
+    <div class="popup__content popup__edit1">
+      <div class="popup__container">
+        <button class="button popup__button-typeclose"></button>
+        <span class="popup__title">Edit profile</span>
+        <form class="popup__form">
+          <fieldset class="popup__fieldset">
+            <input type="text" name="input-name" id="input-name" required minlength="2" maxlength="40"
+              class="popup__input popup__input-name" placeholder="Name">
+            <p class="popup__input-span" id="input-name-error"></p>
+            <input type="text" name="input-job" id="input-job" class="popup__input popup__input-profesion"
+              placeholder="Profession" required minlength="2" maxlength="200">
+            <p class="popup__error-profesion" id="input-job-error"></p>
+          </fieldset>
+          <button class="button popup__button-typesave popup__button" id="popup__profile">
+            Save
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-  <template id="card-template">
-    <li class="elements__container">
-      <img class="elements__image" src="<%=require('./styles/images/image_crater-lake.png')%>" alt="Crater Lake">
-      <button class="elements__trash"></button>
-      <div class="elements__description">
-        <h2 class="elements__text"></h2>
-        <button class="elements__heart"></button>
+  <div class="popup" id="popup__add">
+    <div class="popup__content popup__content-add">
+      <div class="popup__container">
+        <button class="button popup__button-typeclose popup__button-typecloseadd"></button>
+        <span class="popup__title">New place</span>
+        <form class="popup__form popup__form-add">
+          <fieldset class="popup__fieldset">
+            <input type="text" name="input-nameadd" id="input-nameimg" required minlength="2" maxlength="30"
+              class="popup__input popup__input-name popup__input-name-add" placeholder="Title">
+            <p class="popup__input-span" id="input-nameimg-error"></p>
+            <input type="url" name="input-url" id="input-jobimg"
+              class="popup__input popup__input-profesion popup__input-linkadd" placeholder="Image link" required>
+            <p class="popup__error-profesion" id="input-jobimg-error"></p>
+          </fieldset>
+          <button class="button popup__button popup__button-typesave" id="submit__add">
+            Create
+          </button>
+        </form>
       </div>
-    </li>
-  </template>  
+    </div>
+  </div>
+  <div class="popup popup_image" id="popup_image">
+    <div class="popup__content-image">
+      <button class="button button button_close"></button>
+      <img src="." alt="" class="popup__element popup__image">
+      <span class="popup__title popup__title_img"></span>
+    </div>
+  </div>
+  <div class="popup" id="popup__edit1">
+    <div class="popup__content popup__edit1">
+      <div class="popup__container">
+        <button class="button popup__button-typeclose"></button>
+        <span class="popup__title">Edit profile</span>
+        <form class="popup__form">
+          <fieldset class="popup__fieldset">
+            <input type="text" name="input-name" id="input-nameE" required minlength="2" maxlength="40"
+              class="popup__input popup__input-name" placeholder="Name">
+            <p class="popup__input-span" id="input-name-errorE"></p>
+            <input type="text" name="input-job" id="input-jobE" class="popup__input popup__input-profesion"
+              placeholder="Profession" required minlength="2" maxlength="200">
+            <p class="popup__error-profesion" id="input-job-errorE"></p>
+          </fieldset>
+          <button class="button popup__button-typesave popup__button" id="popup__profileEdit">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="popup" id="popup__avatar">
+    <div class="popup__content popup__content-Conf">
+      <div class="popup__containerAvatar">
+        <button class="button popup__button-typeclose popup__button-typecloseadd"></button>
+        <span class="popup__title">Edit profile picture</span>
+        <form class="popup__form popup__form-avatar">
+          <fieldset class="popup__fieldset popup__fieldsetA">
+            <input type="url" name="input-url" id="input-jobimgavatar"
+              class="popup__input popup__input-profesion popup__input-linkadd popup__input-avatar"
+              placeholder="Image link" required>
+            <p class="popup__error" id="input-jobimgavatar-error"></p>
+          </fieldset>
+          <button class="button popup__button popup__button-typesave" id="submit__avatar">
+            Create
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="popup" id="popup__confirmacion">
+    <div class="popup__content popup__content-conf">
+      <div class="popup__containerConf">
+        <button class="button popup__button-typeclose popup__button-typecloseadd"></button>
+        <span class="popup__titleConf">This action cannot be reversed</span>
+        <form class="popup__form popup__form-conf">
+          <button class="button popup__button popup__confirm-button" id="submit__conf">
+            Confirm
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <template id="template__card">
+    <div class="card">
+      <img class="images__card">
+      <div class="card__info">
+        <p class="card__text"></p>
+        <div class="card__container-likes">
+          <button class="button button__type-like"></button>
+          <span class="card__likes"></span>
+        </div>
+        <button class="button button__delete"></button>
+      </div>
+    </div>
+  </template>
 </body>
 </html>
